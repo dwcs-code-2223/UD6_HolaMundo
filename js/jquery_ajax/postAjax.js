@@ -1,40 +1,46 @@
-$(window).on("load", function(){
+$(window).on("load", function () {
     onceLoaded();
 });
 
 function onceLoaded() {
 
+    var dataEnviar = {
+        title: 'foo',
+        body: 'bar',
+        userId: 1
+    };
+
     $.ajax({
         // la URL para la petición
-        url: 'https://jsonplaceholder.typicode.com/users',
+        url: 'https://jsonplaceholder.typicode.com/posts',
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
 
 
         // especifica si será una petición POST o GET
-        type: 'GET',
+        type: 'POST',
 
         // el tipo de información que se espera de respuesta
         dataType: 'json',
-
+        data: dataEnviar
         // código a ejecutar si la petición es satisfactoria;
         // la respuesta es pasada como argumento a la función
     }).done(function (data) {
-        console.log(data);
+        console.log("Ha llegado la respuesta del servidor: " + JSON.stringify(data));
 
 
-
-        let lista = document.createElement("ul");
-        for (var i = 0; i < data.length; i++) {
-            let elem = document.createElement("li");
-            elem.innerHTML = data[i].name;
-            lista.appendChild(elem);
-        }
-
-        var body = document.getElementById("main");
-        body.innerHTML = "";
-        body.appendChild(lista);
+//
+//        let lista = document.createElement("ul");
+//        for (var i = 0; i < data.length; i++) {
+//            let elem = document.createElement("li");
+//            elem.innerHTML = data[i].name;
+//            lista.appendChild(elem);
+//        }
+//
+//        var body = document.getElementById("main");
+//        body.innerHTML = "";
+//        body.appendChild(lista);
 
 //     $( "<h1>" ).text( json.title ).appendTo( "body" );
 //     $( "<div class=\"content\">").html( json.html ).appendTo( "body" );
@@ -49,7 +55,9 @@ function onceLoaded() {
             })
             // Code to run regardless of success or failure;
             .always(function (xhr, status) {
-                alert("The request is complete!");
+                console.log("The request is complete!");
             });
+            
+           
 }
 

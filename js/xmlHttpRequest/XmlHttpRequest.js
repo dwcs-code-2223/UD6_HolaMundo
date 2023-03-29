@@ -13,7 +13,7 @@ function doGet() {
     peticion_http.onreadystatechange = function () {
         if (this.readyState === 4) {
             if (this.status === 200) {
-                alert(this.response);
+                console.log(this.response);
                 //document.getElementById("")
 
 
@@ -24,7 +24,7 @@ function doGet() {
                     let lista = document.createElement("ul");
                     for (var i = 0; i < data.length; i++) {
                         let elem = document.createElement("li");
-                        elem.innerHTML = data[i].name;
+                        elem.innerHTML = data[i].email;
                         lista.appendChild(elem);
                     }
 
